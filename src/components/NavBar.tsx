@@ -6,7 +6,7 @@ import { Menu } from "lucide-react";
 import { ModeToggle } from "./theme/mode-toggle";
 import { motion, AnimatePresence } from "framer-motion";
 
-import { LuMail, LuGithub, LuLinkedin } from "react-icons/lu";
+import { LuMail, LuGithub, LuLinkedin, LuInstagram } from "react-icons/lu";
 
 export default function Navbar() {
   const [collapsed, setCollapsed] = useState(false);
@@ -92,6 +92,21 @@ export default function Navbar() {
                 rel="noopener noreferrer"
               >
                 <LuGithub className="h-4 w-4 md:h-5 md:w-5" />
+              </a>
+            </Button>
+
+            <Button
+              asChild
+              variant="link"
+              size="icon"
+              className="rounded-full hover:text-blue-500 hover:scale-110 transition-all"
+            >
+              <a
+                href="https://www.instagram.com/hori_zon_cloud/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <LuInstagram className="h-4 w-4 md:h-5 md:w-5" />
               </a>
             </Button>
           </motion.div>
