@@ -7,7 +7,7 @@ import {
   type Variants,
   useInView,
 } from "framer-motion";
-import DraggableCard from "@/components/DraggableCard";
+// import DraggableCard from "@/components/DraggableCard";
 import { menuItems } from "@/data/aboutdata";
 import { TextAnimate } from "@/components/ui/text-animate";
 
@@ -16,13 +16,13 @@ export default function About({ id }: { id?: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const descRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { amount: 0.5, once: true });
-  const [ready, setReady] = useState(false);
+  // const [ready, setReady] = useState(false);
 
   // Find the active menu item
   const activeItem = menuItems.find((item) => item.id === active) || menuItems[0];
 
   useEffect(() => {
-    setReady(false);
+    // setReady(false);
   }, [active]);
 
   const containerVariants: Variants = {
@@ -56,79 +56,79 @@ export default function About({ id }: { id?: string }) {
     },
   };
 
-  const renderCards = (
-    cards: { imageUrl: string; size: { width: string; height: string } }[],
-    parentRef: React.RefObject<HTMLDivElement | null>
-  ) => {
-    const positions: {
-      top: number;
-      left: number;
-      width: number;
-      height: number;
-    }[] = [];
-    const container = parentRef.current;
-    if (!container) return null;
+  // const renderCards = (
+  //   cards: { imageUrl: string; size: { width: string; height: string } }[],
+  //   parentRef: React.RefObject<HTMLDivElement | null>
+  // ) => {
+  //   const positions: {
+  //     top: number;
+  //     left: number;
+  //     width: number;
+  //     height: number;
+  //   }[] = [];
+  //   const container = parentRef.current;
+  //   if (!container) return null;
 
-    const containerWidth = container.offsetWidth;
-    const containerHeight = container.offsetHeight;
+  //   const containerWidth = container.offsetWidth;
+  //   const containerHeight = container.offsetHeight;
 
-    const checkCollision = (
-      top: number,
-      left: number,
-      width: number,
-      height: number
-    ) => {
-      return positions.some((pos) => {
-        const overlapX = left < pos.left + pos.width && left + width > pos.left;
-        const overlapY = top < pos.top + pos.height && top + height > pos.top;
-        return overlapX && overlapY;
-      });
-    };
+  //   const checkCollision = (
+  //     top: number,
+  //     left: number,
+  //     width: number,
+  //     height: number
+  //   ) => {
+  //     return positions.some((pos) => {
+  //       const overlapX = left < pos.left + pos.width && left + width > pos.left;
+  //       const overlapY = top < pos.top + pos.height && top + height > pos.top;
+  //       return overlapX && overlapY;
+  //     });
+  //   };
 
-    return cards.map((card, index) => {
-      const cardWidth = parseInt(card.size.width);
-      const cardHeight = parseInt(card.size.height);
-      let top = 0;
-      let left = 0;
-      let attempts = 0;
+  //   return cards.map((card, index) => {
+  //     const cardWidth = parseInt(card.size.width);
+  //     const cardHeight = parseInt(card.size.height);
+  //     let top = 0;
+  //     let left = 0;
+  //     let attempts = 0;
 
-      do {
-        top = Math.random() * (containerHeight - cardHeight);
-        left = Math.random() * (containerWidth - cardWidth);
-        attempts++;
-      } while (
-        checkCollision(top, left, cardWidth, cardHeight) &&
-        attempts < 50
-      );
+  //     do {
+  //       top = Math.random() * (containerHeight - cardHeight);
+  //       left = Math.random() * (containerWidth - cardWidth);
+  //       attempts++;
+  //     } while (
+  //       checkCollision(top, left, cardWidth, cardHeight) &&
+  //       attempts < 50
+  //     );
 
-      positions.push({ top, left, width: cardWidth, height: cardHeight });
+  //     positions.push({ top, left, width: cardWidth, height: cardHeight });
 
-      return (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 80 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 80 }}
-          transition={{
-            type: "spring",
-            stiffness: 200,
-            damping: 20,
-            delay: index * 0.08,
-          }}
-          style={{
-            position: "absolute",
-            top: `${(top / containerHeight) * 100}%`,
-            left: `${(left / containerWidth) * 100}%`,
-          }}
-        >
-          <DraggableCard
-            imageUrl={card.imageUrl}
-            size={{ width: `${cardWidth}px`, height: `${cardHeight}px` }}
-          />
-        </motion.div>
-      );
-    });
-  };
+  //     return (
+  //       <motion.div
+  //         key={index}
+  //         initial={{ opacity: 0, y: 80 }}
+  //         animate={{ opacity: 1, y: 0 }}
+  //         exit={{ opacity: 0, y: 80 }}
+  //         transition={{
+  //           type: "spring",
+  //           stiffness: 200,
+  //           damping: 20,
+  //           delay: index * 0.08,
+  //         }}
+  //         style={{
+  //           position: "absolute",
+  //           top: `${(top / containerHeight) * 100}%`,
+  //           left: `${(left / containerWidth) * 100}%`,
+  //         }}
+  //       >
+  //         <DraggableCard
+  //           imageUrl={card.imageUrl}
+  //           size={{ width: `${cardWidth}px`, height: `${cardHeight}px` }}
+  //         />
+  //       </motion.div>
+  //     );
+  //   });
+  // };
 
   const getMobileLabel = (id: string): string => {
     const labels: Record<string, string> = {
@@ -222,7 +222,7 @@ export default function About({ id }: { id?: string }) {
                 exit="exit"
                 variants={contentVariants}
                 className="relative flex-1"
-                onAnimationComplete={() => setReady(true)}
+                // onAnimationComplete={() => setReady(true)}
               >
                 <div
                   ref={descRef}

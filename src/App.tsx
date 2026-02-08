@@ -6,7 +6,7 @@ import About from "./pages/about";
 import LeadMembers from "./pages/lead members";
 import Projects from "./pages/projects";
 import PartnerCarousel from "./pages/partners";
-import Achievement from "./pages/achievements";
+// import Achievement from "./pages/achievements";
 import { SmoothCursor } from "@/components/ui/smooth-cursor"
 import "leaflet/dist/leaflet.css";
 
