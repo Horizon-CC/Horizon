@@ -9,6 +9,7 @@ import {
   Mail,
   FolderIcon,
   FolderOpenIcon,
+  Instagram,
 } from "lucide-react";
 import { HorizonLogo } from "@/data/images";
 
@@ -109,6 +110,18 @@ export default function ContactBanner() {
                   className="font-heading font-extrabold"
                 >
                   Email
+                </File>
+                <File
+                  value="Instagram"
+                  onClick={() =>
+                    handleClick("https://www.instagram.com/hori_zon_cloud/")
+                  }
+                  fileIcon={
+                    <Instagram className="size-4 text-pink-700 dark:text-pink-600" />
+                  }
+                  className="font-heading font-extrabold"
+                >
+                  Instagram
                 </File>
               </Folder>
             </Tree>
